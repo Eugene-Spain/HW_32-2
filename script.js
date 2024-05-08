@@ -25,10 +25,18 @@ images.forEach(image => {
     const imgGallery = document.createElement('img')
     imgGallery.src = image.src
     imgGallery.alt = image.alt
-    imgGallery.style.cssText = 'width: 250px; height: 250px; border: 6px solid transparent; border-radius: 30px'
+    imgGallery.style.cssText = 'width: 380px; height: 250px; border: 6px solid transparent; border-radius: 30px'
     divGallery.append(imgGallery)  
 })
 divGallery.classList.add('wrapper')
-document.querySelector('.wrapper').style.cssText = 'display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; width: 1150px; border: 3px solid gray; border-radius: 50px; overflow: hidden;'
+const imagesWrapper = document.querySelector('.wrapper')
+imagesWrapper.style.cssText = 'display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; width: 1600px; border: 3px solid gray; border-radius: 50px; overflow: hidden;'
 
-
+imagesWrapper.addEventListener ('click', () => {
+    const imagesArray = Array.from(imagesWrapper.querySelectorAll('img'));
+    imagesArray.sort(() => Math.random() - 0.5)
+    imagesWrapper.innerHTML = ""
+    imagesArray.forEach(image => {
+        imagesWrapper.append(image)
+    })
+})
